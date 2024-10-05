@@ -7,7 +7,6 @@ import {
 } from "firebase/auth";
 import { isValidData } from "../utils/validate";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
@@ -15,7 +14,7 @@ const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
+
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -37,7 +36,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
+          
           updateProfile(user, {
             displayName: name.current.value,
             photoURL: "https://media.vanityfair.com/photos/639b7361d7ff94e0f0151786/master/w_1920,c_limit/1448632081",
@@ -52,7 +51,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -73,8 +71,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
+          
         })
         .catch((error) => {
           const errorCode = error.code;
