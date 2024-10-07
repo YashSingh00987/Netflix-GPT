@@ -9,11 +9,11 @@ import { isValidData } from "../utils/validate";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { AVATAR } from "../utils/constant";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const dispatch = useDispatch();
-
 
   const name = useRef(null);
   const email = useRef(null);
@@ -36,10 +36,10 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          
+
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://media.vanityfair.com/photos/639b7361d7ff94e0f0151786/master/w_1920,c_limit/1448632081",
+            photoURL:AVATAR
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -71,7 +71,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          
         })
         .catch((error) => {
           const errorCode = error.code;
