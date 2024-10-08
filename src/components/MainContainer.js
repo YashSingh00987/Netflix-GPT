@@ -9,10 +9,9 @@ const MainContainer = () => {
   if (!movies) return null;
 
   const opt = Math.floor(Math.random() * movies.length);
-  console.log(opt, movies);
-
+  
   const mainMovie = movies[opt];
-  //console.log(mainMovie)
+  
   const { original_title, overview, id } = mainMovie;
   return (
     <div>
