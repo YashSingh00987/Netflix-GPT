@@ -34,6 +34,9 @@
 - TMDB Image CDN URL
 - Made the Browse Page look appealing
 - created different custom hooks to fetch the movies based on title from TMDB API 
+- GPT Search Page
+- GPT Search Bar
+- Multi-Language feature in our APP
 
 
 
